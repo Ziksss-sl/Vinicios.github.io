@@ -4,9 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mensagem</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #ffe6f0; /* Fundo rosa bem claro */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white; /* Letras brancas */
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        audio {
+            margin-top: 20px;
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 24px;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -50px;
+            }
+            100% {
+                top: 100vh;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>EU NAMORO!!!😡 
-        TE AMO VINI!💍❤️</h1>
+    <h1>EU NAMORO!!!😡<br>TE AMO VINI!💍🩷</h1>
+
+    <audio controls>
+        <source src="Aliança - Tribalistas (clipe oficial).mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function createEmoji() {
+            const emoji = document.createElement('div');
+            emoji.classList.add('emoji');
+            emoji.textContent = '🩷'; // Coração rosa claro
+            emoji.style.left = Math.random() * window.innerWidth + 'px';
+            emoji.style.animationDuration = Math.random() * 2 + 3 + 's';
+
+            document.body.appendChild(emoji);
+
+            setTimeout(() => {
+                emoji.remove();
+            }, 5000);
+        }
+
+        setInterval(createEmoji, 100);
+    </script>
 </body>
 </html>
